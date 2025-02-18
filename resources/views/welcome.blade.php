@@ -6,6 +6,7 @@
     <title>PWL 2024</title>
 </head>
 <body>
+    <h1>SELAMAT DATANG DI MANA HAYOOO</h1>
     <h2>Pemrograman Web Lanjut 2024</h2>
     <h3>Semangat Belajar Laravel 10</h3>
 </body>
