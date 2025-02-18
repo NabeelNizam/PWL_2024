@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,77 +15,81 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'Selamat Datang';    
-});
+// Route::get('/', function () {
+//     return 'Selamat Datang';    
+// });
 
-Route::get('/hello', function () {
-    return 'hello world';
-});
-Route::get('/world', function () {
-    return 'world';
-});
+// Route::get('/hello', function () {
+//     return 'hello world';
+// });
+// Route::get('/world', function () {
+//     return 'world';
+// });
 
-Route::get('/about', function () {
-    return '2341720155, NabeelNizam';
-});
+// Route::get('/about', function () {
+//     return '2341720155, NabeelNizam';
+// });
 
-Route::get('/user/{name?}', function ($name = 'John') {
-    return 'Nama Saya ' . $name;
-});
-Route::get('/post/{post}/comment/{comment}', function ($postId, $commentId ) {
-    return 'Pos ke- ' . $postId . " komentar ke-: " .$commentId;
-});
+// Route::get('/user/{name?}', function ($name = 'John') {
+//     return 'Nama Saya ' . $name;
+// });
+// Route::get('/post/{post}/comment/{comment}', function ($postId, $commentId ) {
+//     return 'Pos ke- ' . $postId . " komentar ke-: " .$commentId;
+// });
 
-Route::get('/route /articles/{id}', function ($id) {
-    return 'Halaman Artikel dengan ID '. $id;
-});
+// Route::get('/route /articles/{id}', function ($id) {
+//     return 'Halaman Artikel dengan ID '. $id;
+// });
 
-Route::get('/user/profile', function () {
-})->name('profile');
+// Route::get('/user/profile', function () {
+// })->name('profile');
 
-Route::get(
-    '/user/profile',
-    [UserProfileController::class, 'show']
-)->name('profile');
+// Route::get(
+//     '/user/profile',
+//     [UserProfileController::class, 'show']
+// )->name('profile');
 
-// Generating URLs...
-$url = route('profile');
+// // Generating URLs...
+// $url = route('profile');
 
-// Generating Redirects...
-return redirect()->route('profile');
+// // Generating Redirects...
+// return redirect()->route('profile');
 
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('/', function () {
-        // Uses first & second middleware...
-    });
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         // Uses first & second middleware...
+//     });
 
-    Route::get('/user/profile', function () {
-        // Uses first & second middleware...
-    });
-});
+//     Route::get('/user/profile', function () {
+//         // Uses first & second middleware...
+//     });
+// });
 
-Route::domain('{account}.example.com')->group(function () {
-    Route::get('/user/{id}', function ($account, $id) {
-        //
-    });
-});
+// Route::domain('{account}.example.com')->group(function () {
+//     Route::get('/user/{id}', function ($account, $id) {
+//         //
+//     });
+// });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/user', [UserController::class, 'index']);
-    Route::get('/post', [PostController::class, 'index']);
-    Route::get('/event', [EventController::class, 'index']);
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/user', [UserController::class, 'index']);
+//     Route::get('/post', [PostController::class, 'index']);
+//     Route::get('/event', [EventController::class, 'index']);
+// });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/user', [UserController::class, 'index']);
-    Route::get('/post', [PostController::class, 'index']);
-    Route::get('/event', [EventController::class, 'index']);
-});
+// Route::prefix('admin')->group(function () {
+//     Route::get('/user', [UserController::class, 'index']);
+//     Route::get('/post', [PostController::class, 'index']);
+//     Route::get('/event', [EventController::class, 'index']);
+// });
 
-Route::redirect('/here', '/there');
+// Route::redirect('/here', '/there');
 
-Route::view('/welcome', 'welcome');
-Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+// Route::view('/welcome', 'welcome');
+// Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
-
+//PRAK 2
+Route::get('/hello', [WelcomeController::class,'hello']); 
+Route::get('/', [PageController::class,'index']); 
+Route::get('/about', [PageController::class,'about']); 
+Route::get('/articles/{id}', [PageController::class,'articles']); 
