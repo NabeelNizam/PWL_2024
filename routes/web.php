@@ -108,6 +108,5 @@ Route::resource('photos', PhotoController::class)->except([
 ]); 
 
 //PRAK 3
-Route::get('/greeting', function () {
-    return view('hello', ['name' => 'Nabeel']);
-   });
+Route::get('/greeting', [WelcomeController::class,
+'greeting']);
